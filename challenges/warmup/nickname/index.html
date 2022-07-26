@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Capture the Ether - 
+Choose a nickname
+</title>
+  <link rel="stylesheet" href="/tachyons.min.css">
+  <link rel="icon" href="/cteicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
+  <script>
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      console.log("Not running Google Analytics on localhost.");
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116951907-1');
+    }
+  </script>
+  
+</head>
+<body class="avenir">
+  
+  <nav class="ph4 dt mb5">
+    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
+    <div class="dtc v-mid">
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    </div>
+    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+      <div id="player"></div>
+    </div>
+  </nav>
+  
+
+  
+<article class="ph3 flex-l center" style="max-width: 1400px">
+  <sidebar id="left" class="pr4-ns pb4" style="flex-grow: 1">
+    <div id="challenge"></div>
+  </sidebar>
+  <div class="f4 dark-gray fw3 lh-copy lekton white" style="max-width: 768px">
+    <p>It&rsquo;s time to set your Capture the Ether nickname! This nickname is how you&rsquo;ll show up on the <a href="https://capturetheether.com/leaderboard/">leaderboard</a>.</p>
+<p>The <code>CaptureTheEther</code> smart contract keeps track of a nickname for every player. To complete this challenge, set your nickname to a non-empty string. The smart contract is running on the Ropsten test network at the address <code>0x71c46Ed333C35e4E6c62D32dc7C8F00D125b4fee</code>.</p>
+<p>Here&rsquo;s the code for this challenge:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
+
+<span style="color:#75715e">// Relevant part of the CaptureTheEther contract.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> CaptureTheEther {
+    <span style="color:#66d9ef">mapping</span> (<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">bytes32</span>) <span style="color:#66d9ef">public</span> nicknameOf;
+
+    <span style="color:#66d9ef">function</span> setNickname(<span style="color:#66d9ef">bytes32</span> nickname) <span style="color:#66d9ef">public</span> {
+        nicknameOf[msg.sender] <span style="color:#f92672">=</span> nickname;
+    }
+}
+
+<span style="color:#75715e">// Challenge contract. You don&#39;t need to do anything with this; it just verifies
+</span><span style="color:#75715e">// that you set a nickname for yourself.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> NicknameChallenge {
+    CaptureTheEther cte <span style="color:#f92672">=</span> CaptureTheEther(msg.sender);
+    <span style="color:#66d9ef">address</span> player;
+
+    <span style="color:#75715e">// Your address gets passed in as a constructor parameter.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> NicknameChallenge(<span style="color:#66d9ef">address</span> _player) <span style="color:#66d9ef">public</span> {
+        player <span style="color:#f92672">=</span> _player;
+    }
+
+    <span style="color:#75715e">// Check that the first character is not null.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+        <span style="color:#66d9ef">return</span> cte.nicknameOf(player)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>;
+    }
+}
+</code></pre></div>
+
+<p>Enjoy this inspirational music while you work: <a href="https://www.youtube.com/watch?v=9YZXPs8uAB0">Say My Name</a>.</p>
+
+  </div>
+</article>
+<script src="/challenge.js"></script>
+<script>
+  renderChallenge("Choose a nickname",  2 , "Warmup",  200 ,  0 );
+</script>
+
+
+  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+    <div class="tc mt3">
+      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
+      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
+      <a href="/cdn-cgi/l/email-protection#73001e12010b33001e12010b5d101c1e" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="1e6d737f6c665e6d737f6c66307d7173">[email&#160;protected]</span></a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
+</body>
+</html>

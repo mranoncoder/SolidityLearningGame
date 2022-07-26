@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Capture the Ether - 
+Predict the block hash
+</title>
+  <link rel="stylesheet" href="/tachyons.min.css">
+  <link rel="icon" href="/cteicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
+  <script>
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      console.log("Not running Google Analytics on localhost.");
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116951907-1');
+    }
+  </script>
+  
+</head>
+<body class="avenir">
+  
+  <nav class="ph4 dt mb5">
+    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
+    <div class="dtc v-mid">
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    </div>
+    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+      <div id="player"></div>
+    </div>
+  </nav>
+  
+
+  
+<article class="ph3 flex-l center" style="max-width: 1400px">
+  <sidebar id="left" class="pr4-ns pb4" style="flex-grow: 1">
+    <div id="challenge"></div>
+  </sidebar>
+  <div class="f4 white fw3 lh-copy lekton" style="max-width: 768px">
+    <p>Guessing an 8-bit number is apparently too easy. This time, you need to predict the entire 256-bit block hash for a future block.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
+
+<span style="color:#66d9ef">contract</span> PredictTheBlockHashChallenge {
+    <span style="color:#66d9ef">address</span> guesser;
+    <span style="color:#66d9ef">bytes32</span> guess;
+    <span style="color:#66d9ef">uint256</span> settlementBlockNumber;
+
+    <span style="color:#66d9ef">function</span> PredictTheBlockHashChallenge() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
+        require(msg.value <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>);
+    }
+
+    <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">address</span>(this).balance <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+    }
+
+    <span style="color:#66d9ef">function</span> lockInGuess(<span style="color:#66d9ef">bytes32</span> hash) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
+        require(guesser <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>);
+        require(msg.value <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>);
+
+        guesser <span style="color:#f92672">=</span> msg.sender;
+        guess <span style="color:#f92672">=</span> hash;
+        settlementBlockNumber <span style="color:#f92672">=</span> block.number <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+    }
+
+    <span style="color:#66d9ef">function</span> settle() <span style="color:#66d9ef">public</span> {
+        require(msg.sender <span style="color:#f92672">==</span> guesser);
+        require(block.number <span style="color:#f92672">&gt;</span> settlementBlockNumber);
+
+        <span style="color:#66d9ef">bytes32</span> answer <span style="color:#f92672">=</span> block.blockhash(settlementBlockNumber);
+
+        guesser <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">if</span> (guess <span style="color:#f92672">==</span> answer) {
+            msg.sender.transfer(<span style="color:#ae81ff">2</span> <span style="color:#66d9ef">ether</span>);
+        }
+    }
+}
+</code></pre></div>
+
+<p>Enjoy this inspirational music while you work: <a href="https://www.youtube.com/watch?v=VbTrdj7vPGU">Get Lucky</a>.</p>
+
+  </div>
+</article>
+<script src="/challenge.js"></script>
+<script>
+  renderChallenge("Predict the block hash",  8 , "Lotteries",  750 ,  1000000000000000000 );
+</script>
+
+
+  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+    <div class="tc mt3">
+      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
+      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
+      <a href="/cdn-cgi/l/email-protection#7c0f111d0e043c0f111d0e04521f1311" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="cbb8a6aab9b38bb8a6aab9b3e5a8a4a6">[email&#160;protected]</span></a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
+</body>
+</html>

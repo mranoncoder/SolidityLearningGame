@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Capture the Ether - 
+  Leaderboard
+</title>
+  <link rel="stylesheet" href="/tachyons.min.css">
+  <link rel="icon" href="/cteicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
+  <script>
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      console.log("Not running Google Analytics on localhost.");
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116951907-1');
+    }
+  </script>
+  
+</head>
+<body class="avenir">
+  
+  <nav class="ph4 dt mb5">
+    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
+    <div class="dtc v-mid">
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    </div>
+    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+      <div id="player"></div>
+    </div>
+  </nav>
+  
+
+  
+  
+<img class="center db pb4" src="/trophy.png">
+
+<div id="leaderboard"></div>
+<script src="/leaderboard.js"></script>
+
+
+
+  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+    <div class="tc mt3">
+      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
+      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
+      <a href="/cdn-cgi/l/email-protection#e5968884979da5968884979dcb868a88" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="51223c30232911223c3023297f323e3c">[email&#160;protected]</span></a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
+</body>
+</html>

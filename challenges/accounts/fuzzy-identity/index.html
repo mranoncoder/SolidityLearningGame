@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Capture the Ether - 
+Fuzzy identity
+</title>
+  <link rel="stylesheet" href="/tachyons.min.css">
+  <link rel="icon" href="/cteicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
+  <script>
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      console.log("Not running Google Analytics on localhost.");
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116951907-1');
+    }
+  </script>
+  
+</head>
+<body class="avenir">
+  
+  <nav class="ph4 dt mb5">
+    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
+    <div class="dtc v-mid">
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    </div>
+    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+      <div id="player"></div>
+    </div>
+  </nav>
+  
+
+  
+<article class="ph3 flex-l center" style="max-width: 1400px">
+  <sidebar id="left" class="pr4-ns pb4" style="flex-grow: 1">
+    <div id="challenge"></div>
+  </sidebar>
+  <div class="f4 white fw3 lh-copy lekton" style="max-width: 768px">
+    <p>This contract can only be used by me (smarx). I don&rsquo;t trust myself to remember my private key, so I&rsquo;ve made it so whatever address I&rsquo;m using in the future will work:</p>
+<ol>
+<li>I always use a wallet contract that returns &ldquo;smarx&rdquo; if you ask its <code>name</code>.</li>
+<li>Everything I write has bad code in it, so my address always includes the hex string <code>badc0de</code>.</li>
+</ol>
+<p>To complete this challenge, steal my identity!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
+
+<span style="color:#66d9ef">interface</span> IName {
+    <span style="color:#66d9ef">function</span> name() <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bytes32</span>);
+}
+
+<span style="color:#66d9ef">contract</span> FuzzyIdentityChallenge {
+    <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">public</span> isComplete;
+
+    <span style="color:#66d9ef">function</span> authenticate() <span style="color:#66d9ef">public</span> {
+        require(isSmarx(msg.sender));
+        require(isBadCode(msg.sender));
+
+        isComplete <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+    }
+
+    <span style="color:#66d9ef">function</span> isSmarx(<span style="color:#66d9ef">address</span> addr) <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+        <span style="color:#66d9ef">return</span> IName(addr).name() <span style="color:#f92672">==</span> <span style="color:#66d9ef">bytes32</span>(<span style="color:#e6db74">&#34;smarx&#34;</span>);
+    }
+
+    <span style="color:#66d9ef">function</span> isBadCode(<span style="color:#66d9ef">address</span> _addr) <span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">pure</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+        <span style="color:#66d9ef">bytes20</span> addr <span style="color:#f92672">=</span> <span style="color:#66d9ef">bytes20</span>(_addr);
+        <span style="color:#66d9ef">bytes20</span> id <span style="color:#f92672">=</span> <span style="color:#e6db74">hex&#34;000000000000000000000000000000000badc0de&#34;</span>;
+        <span style="color:#66d9ef">bytes20</span> mask <span style="color:#f92672">=</span> <span style="color:#e6db74">hex&#34;000000000000000000000000000000000fffffff&#34;</span>;
+
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">uint256</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">34</span>; i<span style="color:#f92672">++</span>) {
+            <span style="color:#66d9ef">if</span> (addr <span style="color:#f92672">&amp;</span> mask <span style="color:#f92672">==</span> id) {
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+            }
+            mask <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">4</span>;
+            id <span style="color:#f92672">&lt;&lt;=</span> <span style="color:#ae81ff">4</span>;
+        }
+
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+    }
+}
+</code></pre></div>
+
+<p>Enjoy this inspirational music while you work: <a href="https://www.youtube.com/watch?v=8wxBLq_C2KQ">Research Me Obsessively</a>.</p>
+
+  </div>
+</article>
+<script src="/challenge.js"></script>
+<script>
+  renderChallenge("Fuzzy identity",  15 , "Accounts",  500 ,  0 );
+</script>
+
+
+  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+    <div class="tc mt3">
+      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
+      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
+      <a href="/cdn-cgi/l/email-protection#fc8f919d8e84bc8f919d8e84d29f9391" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="34475955464c74475955464c1a575b59">[email&#160;protected]</span></a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
+</body>
+</html>

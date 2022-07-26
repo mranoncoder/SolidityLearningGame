@@ -1,0 +1,140 @@
+<!doctype html>
+<html dir="rtl" lang="fa">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>بازی بازی سالیدیتی</title>
+    <meta name="description" content="Prism is a beautiful Bootstrap 4 template for open-source landing pages."/>
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+<!--Header Section-->
+<section class="bg-gradient pt-5 pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                <div > <a class="heading-brand" href="https://instagram.com/arab.sol" style="color: #fff;">Abol.sol</a></div>
+                <a href="https://www.instagram.com/arab.sol/" class="btn btn-dark" target="_blank" >Instagram</a>
+            </div>
+        </div>
+        <div class="row mt-6">
+            <div class="col-md-8 mx-auto text-center">
+                <h1 style="color: #fff; font-family: 'Vazir';">بازی سالیدیتی</h1>
+                <p class="lead mb-5" style="color: #fff;">یادگیری قراردادهای هوشمند اتریوم با بازی!</p>
+                <a href="challenges" class="btn btn-success svg-icon">
+                    شروع بازی!
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto" style="direction: ltr;">
+                <div class="code-window">
+                    <div class="dots">
+                        <div class="red"></div>
+                        <div class="orange"></div>
+                        <div class="green"></div>
+                    </div>
+                    <pre class="language-javascript line-numbers"><code class="language-javascript">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+
+contract Coin is ERC20 {
+    using SafeMath for uint256;
+    uint256 MaxSupply = 1000000 ether; // max token supply  1 000 000
+
+    constructor() ERC20("Abolfazl Coin", "ABOL") {
+        _mint(msg.sender, MaxSupply); //send 1 000 000 tokens to the contract deployer
+    }
+
+}                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto" >
+                <h2 class="text-center text-md-right"><span class="text-success">اینجا کجاست؟</span></h2>
+                    <p class="text-center text-md-right">
+                        بازی سالیدیتی یک بازی هست که شما به عنوان یک هکر یک قرارداد هوشمند اتریوم رو هک میکنید تا درباره ی امنیت قراردادها همه چیز رو یاد بگیرید.
+این بازی قراره هم آموزنده باشه هم باحال!
+این بازی از <a class="text-success" href="https://twitter.com/smarx">smarx</a> ایده برداری شده و توسط ما یعنی <a class="text-success" href="https://www.instagram.com/arab.sol/">Abol</a>  و <a class="text-success" href="https://www.instagram.com/erphha/">Erphha</a>  برای شما به زبان فارسی آماده شده. پس لذت ببرید!
+
+                    </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto" >
+                <h2 class="text-center text-md-right"><span class="text-success">چجوری بازی کنم؟</span></h2>
+                    <p class="text-center text-md-right">
+                        این بازی از یک سری چالش ها در دسته بندی های مختلف تشکیل شده. با گذروندن هر چالش شما امتیاز دریافت میکنید. هرچی چالش سخت تر، امتیاز بیشتر!
+هر چالش در قالب یک اسمارت کانترکت هست که یک فانکشن <a class="text-success">isComplete</a>  یا یک متغیر public  داره. هدف ما یان هست که همیشه فانکشن <a class="text-success">isComplete</a> برای ما <a class="text-success">true</a>  برگردونه! اگه با این چیزا حال میکنی ما یه <a class="text-success" href="/leaderboard/">لیدربرد</a>  داریم.
+                    </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto" >
+                <h2 class="text-center text-md-right"><span class="text-success">اول چیا باید بدونیم؟</span></h2>
+                    <p class="text-center text-md-right">بخش گرم کردن برای شما طراحی شده تا با ابزارهای مورد نیاز آشنا بشید؛ اما اگر راجع به قرارداهای هوشمند اتریوم هیچی نمیدونید و از صفر صفر میخواید شروع کنید، به این صفحه ی یوتیوب ...... سر بزنید و یکم به اطلاعات زمینه ای خودتون اضافه کنید!
+                        و در نهایت، اگر که به مشکلی برخوردید میتونید سوالتون رو توی سرور دیسکورد ما مطرح کنید تا با کمک هم حلش کنیم ؛)
+                        </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Used By Section-->
+<section class="pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2 class="text-center text-center">ما رو در صفحات مجازی دنبال کنید</h2>
+                <div class="mt-5 d-flex flex-row justify-content-md-between flex-wrap press-icons">
+                    <a href="https://www.instagram.com/arab.sol/" > <img src="/src/instagram.png" width = "50" height = "50" alt="Instagram"/></a>
+                    <a href="https://www.youtube.com/channel/UCcXZavXv9K_w791HqkOY6OQ"> <img src="/src/youtube.png" width = "50" height = "50" alt="youtube"/></a>
+                    <a href="https://twitter.com/arab_eth"> <img src="/src/twitter.png"  width = "50" height = "50" alt="twitter"/></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--footer-->
+<footer class="py-5" style="background-color: #108460;">
+    <div class="container" >
+        <div class="row my-2">
+            <div class="col-md-4 mx-auto  text-center small-xl" style="color: white;">
+                ساخته شده توسط <a style="color: #FFC300 ;" href="https://instagram.com/erphha">Erphha</a>, <a style="color: #FFC300 ;" href="https://instagram.com/arab.sol">Abol</a> و <a style="color: #FFC300;" href="https://twitter.com/smarx">smarx</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

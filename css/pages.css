@@ -1,0 +1,99 @@
+body{
+    background: linear-gradient(#108460, #108460);
+    
+  }
+    #playarrow {
+      transition: all 0.2s ease;
+      left: 0;
+    }
+    a:hover #playarrow {
+      left: 10px;
+    }
+    pre, .pre  {
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    code {
+      font-family: inconsolata, Menlo, Monaco, Consolas, "Courier New", monospace;
+    }
+
+    code {
+      padding: 0.2em;
+      font-size: 85%;
+      background-color: rgba(27,31,35,.05);
+      border-radius: 3px;
+    }
+
+    pre code {
+      background-color: transparent;
+      display: block;
+      padding: 1.5em;
+      white-space: pre;
+      font-size: .875rem;
+      line-height: 1.25;
+    }
+
+    pre {
+      white-space: pre;
+
+      hyphens: none;
+      position: relative;
+    }
+
+    article p {
+      margin-top: 0;
+    }
+
+    nav {
+    margin-top: 1%;
+    margin-left: 20%;
+    margin-right: 20%;
+      border-radius: 4.8px;
+      height: fit-content;
+      width: 1200px;
+	display: inline-flex;
+      background: #fff;
+	-webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);  
+	align-items: center;
+  padding: 0 10px;
+    }
+    .myGreen{
+      color: #108460;
+    }
+    .myOrange{
+      color:  black ;
+    }
+    .myYellow{
+      color:  #FFC300 ;
+    }
+    .molengo {
+      font-family: molengo;
+    }
+
+    .lekton {
+      font-family: lekton;
+    }
+
+    .vt323 {
+      font-family: VT323;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    .in-progress {
+      background-color: #e7040f;
+      color: white;
+      cursor: default;
+    }
+
+    .pressstart2p {
+      font-family: press_start_2pregular;
+    }
+
+    sidebar#left {
+      max-width: 30em;
+    }

@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Capture the Ether - 
+Fifty years
+</title>
+  <link rel="stylesheet" href="/tachyons.min.css">
+  <link rel="icon" href="/cteicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
+  <script>
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      console.log("Not running Google Analytics on localhost.");
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116951907-1');
+    }
+  </script>
+  
+</head>
+<body class="avenir">
+  
+  <nav class="ph4 dt mb5">
+    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
+    <div class="dtc v-mid">
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    </div>
+    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+      <div id="player"></div>
+    </div>
+  </nav>
+  
+
+  
+<article class="ph3 flex-l center" style="max-width: 1400px">
+  <sidebar id="left" class="pr4-ns pb4" style="flex-grow: 1">
+    <div id="challenge"></div>
+  </sidebar>
+  <div class="f4 white fw3 lh-copy lekton" style="max-width: 768px">
+    <p>This contract locks away ether. The initial ether is locked away until 50 years has passed, and subsequent contributions are locked until even later.</p>
+<p>All you have to do to complete this challenge is wait 50 years and withdraw the ether. If you&rsquo;re not that patient, you&rsquo;ll need to combine several techniques to hack this contract.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
+
+<span style="color:#66d9ef">contract</span> FiftyYearsChallenge {
+    <span style="color:#66d9ef">struct</span> Contribution {
+        <span style="color:#66d9ef">uint256</span> amount;
+        <span style="color:#66d9ef">uint256</span> unlockTimestamp;
+    }
+    Contribution[] queue;
+    <span style="color:#66d9ef">uint256</span> head;
+
+    <span style="color:#66d9ef">address</span> owner;
+    <span style="color:#66d9ef">function</span> FiftyYearsChallenge(<span style="color:#66d9ef">address</span> player) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
+        require(msg.value <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>);
+
+        owner <span style="color:#f92672">=</span> player;
+        queue.push(Contribution(msg.value, now <span style="color:#f92672">+</span> <span style="color:#ae81ff">50</span> <span style="color:#66d9ef">years</span>));
+    }
+
+    <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">address</span>(this).balance <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+    }
+
+    <span style="color:#66d9ef">function</span> upsert(<span style="color:#66d9ef">uint256</span> index, <span style="color:#66d9ef">uint256</span> timestamp) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
+        require(msg.sender <span style="color:#f92672">==</span> owner);
+
+        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&gt;=</span> head <span style="color:#f92672">&amp;&amp;</span> index <span style="color:#f92672">&lt;</span> queue.length) {
+            <span style="color:#75715e">// Update existing contribution amount without updating timestamp.
+</span><span style="color:#75715e"></span>            Contribution <span style="color:#66d9ef">storage</span> contribution <span style="color:#f92672">=</span> queue[index];
+            contribution.amount <span style="color:#f92672">+=</span> msg.value;
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#75715e">// Append a new contribution. Require that each contribution unlock
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// at least 1 day after the previous one.
+</span><span style="color:#75715e"></span>            require(timestamp <span style="color:#f92672">&gt;=</span> queue[queue.length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>].unlockTimestamp <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">days</span>);
+
+            contribution.amount <span style="color:#f92672">=</span> msg.value;
+            contribution.unlockTimestamp <span style="color:#f92672">=</span> timestamp;
+            queue.push(contribution);
+        }
+    }
+
+    <span style="color:#66d9ef">function</span> withdraw(<span style="color:#66d9ef">uint256</span> index) <span style="color:#66d9ef">public</span> {
+        require(msg.sender <span style="color:#f92672">==</span> owner);
+        require(now <span style="color:#f92672">&gt;=</span> queue[index].unlockTimestamp);
+
+        <span style="color:#75715e">// Withdraw this and any earlier contributions.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">uint256</span> total <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">uint256</span> i <span style="color:#f92672">=</span> head; i <span style="color:#f92672">&lt;=</span> index; i<span style="color:#f92672">++</span>) {
+            total <span style="color:#f92672">+=</span> queue[i].amount;
+
+            <span style="color:#75715e">// Reclaim storage.
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">delete</span> queue[i];
+        }
+
+        <span style="color:#75715e">// Move the head of the queue forward so we don&#39;t have to loop over
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// already-withdrawn contributions.
+</span><span style="color:#75715e"></span>        head <span style="color:#f92672">=</span> index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+
+        msg.sender.transfer(total);
+    }
+}
+</code></pre></div>
+
+<p>Enjoy this inspirational music while you work: <a href="https://www.youtube.com/watch?v=tR-qQcNT_fY">100 Years</a>. I guess just listen to half of it.</p>
+
+  </div>
+</article>
+<script src="/challenge.js"></script>
+<script>
+  renderChallenge("Fifty years",  14 , "Math",  2000 ,  1000000000000000000 );
+</script>
+
+
+  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+    <div class="tc mt3">
+      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
+      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
+      <a href="/cdn-cgi/l/email-protection#64170905161c24170905161c4a070b09" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="1f6c727e6d675f6c727e6d67317c7072">[email&#160;protected]</span></a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
+</body>
+</html>

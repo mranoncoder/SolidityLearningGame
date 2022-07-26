@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Capture the Ether - 
+Token whale
+</title>
+  <link rel="stylesheet" href="/tachyons.min.css">
+  <link rel="icon" href="/cteicon.png" type="image/png">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
+  <script>
+    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+      console.log("Not running Google Analytics on localhost.");
+    } else {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116951907-1');
+    }
+  </script>
+  
+</head>
+<body class="avenir">
+  
+  <nav class="ph4 dt mb5">
+    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
+    <div class="dtc v-mid">
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
+      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    </div>
+    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+      <div id="player"></div>
+    </div>
+  </nav>
+  
+
+  
+<article class="ph3 flex-l center" style="max-width: 1400px">
+  <sidebar id="left" class="pr4-ns pb4" style="flex-grow: 1">
+    <div id="challenge"></div>
+  </sidebar>
+  <div class="f4 white fw3 lh-copy lekton" style="max-width: 768px">
+    <p>This ERC20-compatible token is hard to acquire. There&rsquo;s a fixed supply of 1,000 tokens, all of which are yours to start with.</p>
+<p>Find a way to accumulate at least 1,000,000 tokens to solve this challenge.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
+
+<span style="color:#66d9ef">contract</span> TokenWhaleChallenge {
+    <span style="color:#66d9ef">address</span> player;
+
+    <span style="color:#66d9ef">uint256</span> <span style="color:#66d9ef">public</span> totalSupply;
+    <span style="color:#66d9ef">mapping</span>(<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">uint256</span>) <span style="color:#66d9ef">public</span> balanceOf;
+    <span style="color:#66d9ef">mapping</span>(<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">mapping</span>(<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">uint256</span>)) <span style="color:#66d9ef">public</span> allowance;
+
+    <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">public</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Simple ERC20 Token&#34;</span>;
+    <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">public</span> symbol <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SET&#34;</span>;
+    <span style="color:#66d9ef">uint8</span> <span style="color:#66d9ef">public</span> decimals <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+
+    <span style="color:#66d9ef">function</span> TokenWhaleChallenge(<span style="color:#66d9ef">address</span> _player) <span style="color:#66d9ef">public</span> {
+        player <span style="color:#f92672">=</span> _player;
+        totalSupply <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+        balanceOf[player] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+    }
+
+    <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+        <span style="color:#66d9ef">return</span> balanceOf[player] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1000000</span>;
+    }
+
+    <span style="color:#66d9ef">event</span> Transfer(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> <span style="color:#66d9ef">from</span>, <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> to, <span style="color:#66d9ef">uint256</span> value);
+
+    <span style="color:#66d9ef">function</span> _transfer(<span style="color:#66d9ef">address</span> to, <span style="color:#66d9ef">uint256</span> value) <span style="color:#66d9ef">internal</span> {
+        balanceOf[msg.sender] <span style="color:#f92672">-=</span> value;
+        balanceOf[to] <span style="color:#f92672">+=</span> value;
+
+        emit Transfer(msg.sender, to, value);
+    }
+
+    <span style="color:#66d9ef">function</span> transfer(<span style="color:#66d9ef">address</span> to, <span style="color:#66d9ef">uint256</span> value) <span style="color:#66d9ef">public</span> {
+        require(balanceOf[msg.sender] <span style="color:#f92672">&gt;=</span> value);
+        require(balanceOf[to] <span style="color:#f92672">+</span> value <span style="color:#f92672">&gt;=</span> balanceOf[to]);
+
+        _transfer(to, value);
+    }
+
+    <span style="color:#66d9ef">event</span> Approval(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> owner, <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> spender, <span style="color:#66d9ef">uint256</span> value);
+
+    <span style="color:#66d9ef">function</span> approve(<span style="color:#66d9ef">address</span> spender, <span style="color:#66d9ef">uint256</span> value) <span style="color:#66d9ef">public</span> {
+        allowance[msg.sender][spender] <span style="color:#f92672">=</span> value;
+        emit Approval(msg.sender, spender, value);
+    }
+
+    <span style="color:#66d9ef">function</span> transferFrom(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">from</span>, <span style="color:#66d9ef">address</span> to, <span style="color:#66d9ef">uint256</span> value) <span style="color:#66d9ef">public</span> {
+        require(balanceOf[<span style="color:#66d9ef">from</span>] <span style="color:#f92672">&gt;=</span> value);
+        require(balanceOf[to] <span style="color:#f92672">+</span> value <span style="color:#f92672">&gt;=</span> balanceOf[to]);
+        require(allowance[<span style="color:#66d9ef">from</span>][msg.sender] <span style="color:#f92672">&gt;=</span> value);
+
+        allowance[<span style="color:#66d9ef">from</span>][msg.sender] <span style="color:#f92672">-=</span> value;
+        _transfer(to, value);
+    }
+}
+</code></pre></div>
+
+<p>Enjoy this inspirational music while you work: <a href="https://www.youtube.com/watch?v=cvcA8truev4">Tough Decisions</a>.</p>
+
+  </div>
+</article>
+<script src="/challenge.js"></script>
+<script>
+  renderChallenge("Token whale",  10 , "Math",  500 ,  0 );
+</script>
+
+
+  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+    <div class="tc mt3">
+      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
+      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
+      <a href="/cdn-cgi/l/email-protection#196a74786b61596a74786b61377a7674" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="582b35392a20182b35392a20763b3735">[email&#160;protected]</span></a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
+</body>
+</html>
