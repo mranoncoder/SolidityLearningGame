@@ -43,6 +43,14 @@
 *::after {
   box-sizing: border-box; }
 
+  @font-face {
+    font-family: 'Vazir';
+    src: url('../vazir/Vazir-Medium.woff2') format('woff2'),
+         url('../vazir/Vazir-Medium.woff') format('woff'),
+         url('../vazir/Vazir-Medium.ttf') format('ttf'),
+         url('../vazir/Vazir-Medium.eot') format('oet');
+  }
+
 html {
   font-family: 'Vazir';
   line-height: 1.15;
@@ -50,13 +58,6 @@ html {
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent; 
-}
-@font-face {
-  font-family: 'Vazir';
-  src: url('../vazir/Vazir-Medium.woff2') format('woff2'),
-       url('../vazir/Vazir-Medium.woff') format('woff')
-       url('../vazir/Vazir-Medium.ttf') format('ttf')
-       url(../vazir/Vazir-Medium.eot) format('oet');
 }
 
 @-ms-viewport {
@@ -5018,8 +5019,8 @@ Custom CSS
   background-color: #ffff00;
   color: #000000; }
 
-a:not(.heading-brand) {
-  font-weight: 500; }
+/* a:not(.heading-brand) {
+  font-weight: ; } */
 
 .font-weight-medium {
   font-weight: 500; }
@@ -5131,7 +5132,7 @@ footer a {
  */
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #000000;
+  color: #fff;
   background: none;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   text-align: left;

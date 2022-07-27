@@ -1,119 +1,194 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Capture the Ether - 
-Retirement fund
-</title>
-  <link rel="stylesheet" href="/tachyons.min.css">
-  <link rel="icon" href="/cteicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/pages.css">
-  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
-  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
-  <script>
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      console.log("Not running Google Analytics on localhost.");
-    } else {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <title>بازی سالیدیتی</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <!-- <link rel="stylesheet" href="../tachyons.min.css"> -->
+    <!-- <link rel="icon" href="../cteicon.png" type="image/png"> -->
+    <link rel="stylesheet" href="../../../css/bootstrap.css" />
+    <link rel="stylesheet" href="../../../css/pages.css" />
 
-      gtag('config', 'UA-116951907-1');
-    }
-  </script>
-  
-</head>
-<body class="avenir">
-  <nav class="ph4 dt mb5">
-    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
-    <div class="dtc v-mid">
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
-    </div>
-    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
-      <div id="player"></div>
-    </div>
-  </nav>
-  
+    <!-- <link rel="stylesheet" href="../font/stylesheet.css"> -->
+    <!--Google font-->
+    <link
+      href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800"
+      rel="stylesheet"
+    />
 
-  
-<article class="ph3 flex-l center" style="max-width: 1400px">
-  <sidebar id="left" class="pr4-ns pb4" style="flex-grow: 1">
-    <div id="challenge"></div>
-  </sidebar>
-  <div class="f4 white fw3 lh-copy lekton" style="max-width: 768px">
-    <p>This retirement fund is what economists call a <a href="https://en.wikipedia.org/wiki/Commitment_device">commitment device</a>. I&rsquo;m trying to make sure I hold on to 1 ether for retirement.</p>
-<p>I&rsquo;ve committed 1 ether to the contract below, and I won&rsquo;t withdraw it until 10 years have passed. If I <em>do</em> withdraw early, 10% of my ether goes to the <code>beneficiary</code> (you!).</p>
-<p>I really don&rsquo;t want you to have 0.1 of my ether, so I&rsquo;m resolved to leave those funds alone until 10 years from now. Good luck!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
-
-<span style="color:#66d9ef">contract</span> RetirementFundChallenge {
-    <span style="color:#66d9ef">uint256</span> startBalance;
-    <span style="color:#66d9ef">address</span> owner <span style="color:#f92672">=</span> msg.sender;
-    <span style="color:#66d9ef">address</span> beneficiary;
-    <span style="color:#66d9ef">uint256</span> expiration <span style="color:#f92672">=</span> now <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">years</span>;
-
-    <span style="color:#66d9ef">function</span> RetirementFundChallenge(<span style="color:#66d9ef">address</span> player) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
-        require(msg.value <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>);
-
-        beneficiary <span style="color:#f92672">=</span> player;
-        startBalance <span style="color:#f92672">=</span> msg.value;
-    }
-
-    <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">address</span>(this).balance <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
-    }
-
-    <span style="color:#66d9ef">function</span> withdraw() <span style="color:#66d9ef">public</span> {
-        require(msg.sender <span style="color:#f92672">==</span> owner);
-
-        <span style="color:#66d9ef">if</span> (now <span style="color:#f92672">&lt;</span> expiration) {
-            <span style="color:#75715e">// early withdrawal incurs a 10% penalty
-</span><span style="color:#75715e"></span>            msg.sender.transfer(<span style="color:#66d9ef">address</span>(this).balance <span style="color:#f92672">*</span> <span style="color:#ae81ff">9</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>);
-        } <span style="color:#66d9ef">else</span> {
-            msg.sender.transfer(<span style="color:#66d9ef">address</span>(this).balance);
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"
+    ></script>
+    <script>
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        console.log("Not running Google Analytics on localhost.");
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
         }
-    }
+        gtag("js", new Date());
 
-    <span style="color:#66d9ef">function</span> collectPenalty() <span style="color:#66d9ef">public</span> {
-        require(msg.sender <span style="color:#f92672">==</span> beneficiary);
+        gtag("config", "UA-116951907-1");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Abol.sol</a>
 
-        <span style="color:#66d9ef">uint256</span> withdrawn <span style="color:#f92672">=</span> startBalance <span style="color:#f92672">-</span> <span style="color:#66d9ef">address</span>(this).balance;
+          <div class="nav-links" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item mx-2">
+                <a
+                  class="nav-link  "
+                  aria-current="page"
+                  href="/"
+                  >خانه</a
+                >
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link " href="/challenges">چالش ها</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link " href="/resources">منابع</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link " href="/leaderboard">لیدربرد</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-        <span style="color:#75715e">// an early withdrawal occurred
-</span><span style="color:#75715e"></span>        require(withdrawn <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+      <article class="container article-deploy">
+        <sidebar id="left" class="sidebar" style="flex-grow: 1">
+          <div id="challenge"></div>
+        </sidebar>
+        <div class="deploy-header">
+          <h2 class="text-center text-white">بودجه بازنشستگی</h2>
+          <h4 class="header text-white">
+            بودجه بازنشستگی همون چیزیه که اقتصاد دان ها بهش میگن "صندوق
+            بازنشستگی". ما سعی داریم مقدار 1 اتر رو برای بازنشستگی پس انداز
+            کنیم!
+          </h4>
+          <p class="text-white">
+            برای این کار ما 1 اتر رو به قرارداد زیر وارد میکنیم و تا قبل از 10
+            سال اون رو برداشت نمیکنیم. اگر که ما قبل از 10 سال این اتر رو برداشت
+            کردیم مقدار %10 از اتر ما به حساب ذی نفع (یعنی شما) واریز میشه!
+          </p>
+          <p class="text-white">
+            ما واقعا نمیخوایم شما %10 اتر مارو داشته باشید؛ بنا براین تا 10 سال
+            آینده قصد داریم اتر خودمون رو دست نخورده نگه داریم!
+          </p>
+          <p class="text-white">توی دستبرد زدن بهش موفق باشید!</p>
 
-        <span style="color:#75715e">// penalty is what&#39;s left
-</span><span style="color:#75715e"></span>        msg.sender.transfer(<span style="color:#66d9ef">address</span>(this).balance);
-    }
-}
-</code></pre></div>
+          <div class="highlight" dir="ltr">
+            <pre
+              style="
+                color: #f8f8f2;
+                background-color: #272822;
+                -moz-tab-size: 4;
+                -o-tab-size: 4;
+                tab-size: 4;
+              "
+            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
 
-<p>Enjoy this inspirational music while you work: <a href="https://www.youtube.com/watch?v=Mx0xCI1jaUM">Smooth Criminal</a>.</p>
+            <span style="color:#66d9ef">contract</span> RetirementFundChallenge {
+                <span style="color:#66d9ef">uint256</span> startBalance;
+                <span style="color:#66d9ef">address</span> owner <span style="color:#f92672">=</span> msg.sender;
+                <span style="color:#66d9ef">address</span> beneficiary;
+                <span style="color:#66d9ef">uint256</span> expiration <span style="color:#f92672">=</span> now <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">years</span>;
+            
+                <span style="color:#66d9ef">function</span> RetirementFundChallenge(<span style="color:#66d9ef">address</span> player) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
+                    require(msg.value <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>);
+            
+                    beneficiary <span style="color:#f92672">=</span> player;
+                    startBalance <span style="color:#f92672">=</span> msg.value;
+                }
+            
+                <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
+                    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">address</span>(this).balance <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+                }
+            
+                <span style="color:#66d9ef">function</span> withdraw() <span style="color:#66d9ef">public</span> {
+                    require(msg.sender <span style="color:#f92672">==</span> owner);
+            
+                    <span style="color:#66d9ef">if</span> (now <span style="color:#f92672">&lt;</span> expiration) {
+                        <span style="color:#75715e">// early withdrawal incurs a 10% penalty
+            </span><span style="color:#75715e"></span>            msg.sender.transfer(<span style="color:#66d9ef">address</span>(this).balance <span style="color:#f92672">*</span> <span style="color:#ae81ff">9</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span>);
+                    } <span style="color:#66d9ef">else</span> {
+                        msg.sender.transfer(<span style="color:#66d9ef">address</span>(this).balance);
+                    }
+                }
+            
+                <span style="color:#66d9ef">function</span> collectPenalty() <span style="color:#66d9ef">public</span> {
+                    require(msg.sender <span style="color:#f92672">==</span> beneficiary);
+            
+                    <span style="color:#66d9ef">uint256</span> withdrawn <span style="color:#f92672">=</span> startBalance <span style="color:#f92672">-</span> <span style="color:#66d9ef">address</span>(this).balance;
+            
+                    <span style="color:#75715e">// an early withdrawal occurred
+            </span><span style="color:#75715e"></span>        require(withdrawn <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>);
+            
+                    <span style="color:#75715e">// penalty is what&#39;s left
+            </span><span style="color:#75715e"></span>        msg.sender.transfer(<span style="color:#66d9ef">address</span>(this).balance);
+                }
+            }
+            </code></pre>
+          </div>
 
-  </div>
-</article>
-<script src="/challenge.js"></script>
-<script>
-  renderChallenge("Retirement fund",  11 , "Math",  500 ,  1000000000000000000 );
-</script>
-
-
-  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
-    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
-    <div class="tc mt3">
-      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
-      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
-      <a href="/cdn-cgi/l/email-protection#d1a2bcb0a3a991a2bcb0a3a9ffb2bebc" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="b7c4dad6c5cff7c4dad6c5cf99d4d8da">[email&#160;protected]</span></a>
+          <p class="text-white">
+            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊 ....
+          </p>
+        </div>
+      </article>
     </div>
-  </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
-</body>
+    <footer class="py-5 my-4" style="background-color: #108460">
+      <div class="container">
+        <div class="row my-2">
+          <div
+            class="col-md-4 mx-auto text-center small-xl"
+            style="color: white"
+          >
+            ساخته شده توسط
+            <a style="color: #ffc300" href="https://instagram.com/erphha"
+              >Erphha</a
+            >,
+            <a style="color: #ffc300" href="https://instagram.com/arab.sol"
+              >Abol</a
+            >
+            و
+            <a style="color: #ffc300" href="https://twitter.com/smarx">smarx</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../../challenge.js"></script>
+    <script>
+      renderChallenge("Retirement fund", 11, "Math", 500, 1000000000000000000);
+    </script>
+        <script src="../../../app.js"></script>
+
+  </body>
 </html>
