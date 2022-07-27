@@ -1,17 +1,25 @@
 <!doctype html>
-<html>
+<html dir="rtl" lang="fa">
 <head>
   <meta charset="utf-8">
   <title>Capture the Ether - 
   Leaderboard
 </title>
-  <link rel="stylesheet" href="/tachyons.min.css">
-  <link rel="icon" href="/cteicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/pages.css">
-  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
-  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+<link
+rel="stylesheet"
+href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+/>
+<!-- <link rel="stylesheet" href="../tachyons.min.css"> -->
+<!-- <link rel="icon" href="../cteicon.png" type="image/png"> -->
+<link rel="stylesheet" href="../../../css/bootstrap.css" />
+<link rel="stylesheet" href="../../../css/pages.css" />
+
+<!-- <link rel="stylesheet" href="../font/stylesheet.css"> -->
+<!--Google font-->
+<link
+href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800"
+rel="stylesheet"
+/>
   
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
   <script>
@@ -28,38 +36,64 @@
   
 </head>
 <body class="avenir">
-  
-  <nav class="ph4 dt mb5">
-    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
-    <div class="dtc v-mid">
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
-    </div>
-    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
-      <div id="player"></div>
+  <div class="container">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Abol.sol</a>
+
+      <div class="nav-links" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item mx-2">
+            <a
+              class="nav-link  "
+              aria-current="page"
+              href="/"
+              >خانه</a
+            >
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link " href="/challenges">چالش ها</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link " href="/resources">منابع</a>
+          </li>
+          <li class="nav-item mx-4">
+            <a class="nav-link " href="/leaderboard">لیدربرد</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   
 
   
   
-<img class="center db pb4" src="/trophy.png">
+<img class="center db pb4 " width = "50" height = "50" src="/src/award.png">
 
 <div id="leaderboard"></div>
 <script src="/leaderboard.js"></script>
+</div>
 
-
-
-  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
-    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
-    <div class="tc mt3">
-      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
-      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
-      <a href="/cdn-cgi/l/email-protection#e5968884979da5968884979dcb868a88" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="51223c30232911223c3023297f323e3c">[email&#160;protected]</span></a>
+<footer class="py-5 my-4" style="background-color: #108460">
+  <div class="container">
+    <div class="row my-2">
+      <div
+        class="col-md-4 mx-auto text-center small-xl"
+        style="color: white"
+      >
+        ساخته شده توسط
+        <a style="color: #ffc300" href="https://instagram.com/erphha"
+          >Erphha</a
+        >,
+        <a style="color: #ffc300" href="https://instagram.com/arab.sol"
+          >Abol</a
+        >
+        و
+        <a style="color: #ffc300" href="https://twitter.com/smarx">smarx</a>
+      </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
 </body>

@@ -1,94 +1,188 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Capture the Ether - 
-  Resources
-</title>
-  <link rel="stylesheet" href="/tachyons.min.css">
-  <link rel="icon" href="/cteicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/pages.css">
-  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
-  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
-  <script>
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      console.log("Not running Google Analytics on localhost.");
-    } else {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <title>بازی سالیدیتی</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <!-- <link rel="stylesheet" href="../tachyons.min.css"> -->
+    <!-- <link rel="icon" href="../cteicon.png" type="image/png"> -->
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
 
-      gtag('config', 'UA-116951907-1');
-    }
-  </script>
-  
-</head>
-<body class="avenir">
-  
-  <nav class="ph4 dt mb5">
-    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
-    <div class="dtc v-mid">
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/" title="Home">Home</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/challenges" title="Challenges">شروع</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
-      <a class="link dim myGreen ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
+    <!-- <link rel="stylesheet" href="../font/stylesheet.css"> -->
+    <!--Google font-->
+    <link
+      href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800"
+      rel="stylesheet"
+    />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"
+    ></script>
+    <script>
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        console.log("Not running Google Analytics on localhost.");
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "UA-116951907-1");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Abol.sol</a>
+
+          <div class="nav-links" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item mx-2">
+                <a class="nav-link" aria-current="page" href="/">خانه</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" href="/challenges">چالش ها</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" href="/resources">منابع</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" href="/leaderboard">لیدربرد</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <article class="container" dir="rtl">
+        <div class="text-right">
+          <h2 class="text-white">ابزار کاربردی</h2>
+          <p class="text-white">
+            <a href="https://etherscan.io/" class="text-warning">Etherscan</a> -
+            این سایت تمامی حساب ها و تراکنش های روی بلاکچین اتریوم رو به ما نشون
+            میده.
+          </p>
+          <p class="text-white">
+            <a href="https://remix.ethereum.org/" class="text-warning"
+              >Remix
+            </a>
+            - ریمیکس برای کامپایل و دیپلوی قرارداد ها استفاده میشه. همچینین
+            میتونید از اون برای تبادل با قراردادهایی که قبلا دیپلوی شدن استفاده
+            کنید.
+          </p>
+          <p class="text-white">
+            <a href="https://myetherwallet.com/" class="text-warning"
+              >MyEtherWallet
+            </a>
+            - یک ابزار دیگه هست که میتونید ازش برای تبادل با قراردادهای دیپلوی
+            شده استفاده کنید. برای استفاده از این ابزار به ABI قرارداد مورد نظر
+            نیاز دارید که میتونید با کامپایل کردن اون قرارداد به دستش بیارید.
+          </p>
+        </div>
+
+        <div class="text-right mt-4 w-100">
+          <h2 class="text-white">برای مطالعه</h2>
+          <p class="text-white">
+            <a href="https://programtheblockchain.com/" class="text-warning"
+              >Program the BlockChain
+            </a>
+            - این سایتی هست که smarx در اونجا راجع به قراردادهای هوشمند مطالب
+            مفیدی میذاره و فعالیت میکنه.
+          </p>
+          <p class="text-white">
+            <a href="https://solidity.readthedocs.io/" class="text-warning"
+              >Solidity documentation
+            </a>
+            - این سایت همیشه بهترین گزینه نیست ولی خوندنش قطعا کمک کننده هست.
+          </p>
+          <p class="text-white">
+            <a href="http://yellowpaper.io/" class="text-warning"
+              >The yellow paper
+            </a>
+            - متن ساده ای نیست ولی بدون شک کامل ترین منبع در مورد اتریوم و ماشین
+            مجازی اتریوم EVM همین سایت خواهد بود.
+          </p>
+        </div>
+
+        <div class="text-right mt-4 w-100">
+          <h2 class="text-white">کتابخونه های کدنویسی</h2>
+          <p class="text-white">
+            <a href="https://github.com/ethereum/web3.js" class="text-warning"
+              >Web3.js</a
+            >
+            - این کتابخونه منبع استاندارد رابط کاربری Javascript برای اتریوم
+            هست.
+          </p>
+          <p class="text-white">
+            <a href="https://github.com/ethereumjs" class="text-warning"
+              >ethereumjs
+            </a>
+            - این کتابخونه به عنوان بخشی از ماژول های Node.js ارائه میشه و بسیار
+            کاربردی هست.
+          </p>
+          <p class="text-white">
+            <a href="https://github.com/ethereum/web3.py" class="text-warning"
+              >web3.py</a
+            >
+            - همون Web3.js هست که برای پایتون ارائه شده.
+          </p>
+        </div>
+        <div class="text-right mt-4 w-100">
+          <h2 class="text-white">از کجا کمک بگیریم</h2>
+          <p class="text-white">
+            <a href="https://discord.gg/8dhFjgRsDM" class="text-warning"
+              >Discord</a
+            >
+            - دوستان عزیز شما میتونید با عضویت توی سرور دیسکورد ما با بقیه
+            دولوپر ها در ارتباط باشید و سوالاتتون رو مطرح کنید. ما تمام سعیمون
+            رو میکنیم که شما اطلاعات لازم رو به دست بیارید و به یک سالیدیتی
+            دولوپر حرفه ای تبدیل بشید. ممنون که همراه ما هستید!
+          </p>
+        </div>
+      </article>
     </div>
-    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
-      <div id="player"></div>
-    </div>
-  </nav>
-  
 
-  
-  
-<article class="ph3 center" style="max-width: 1400px">
-  <section class="measure mt4 center lh-copy f4 avenir">
-    <h2 class="f2 fw5 mt2">Tools to use</h2>
-    <ul>
-      <li><a href="https://etherscan.io">Etherscan</a> – Etherscan is useful for viewing accounts and transactions on the block chain, among other things.</li>
-      <li><a href="https://remix.ethereum.org">Remix</a> – Remix can be used to compile and deploy contracts. It can also be used to interact with an already-deployed contract.</li>
-      <li><a href="https://myetherwallet.com">MyEtherWallet</a> – MEW is another tool that can be used to interact with deployed contracts. You'll need the ABI for the contract, which you can get by compiling it.</li>
-    </ul>
+    <footer class="py-5 my-4" style="background-color: #108460">
+      <div class="container">
+        <div class="row my-2">
+          <div
+            class="col-md-4 mx-auto text-center small-xl"
+            style="color: white"
+          >
+            ساخته شده توسط
+            <a style="color: #ffc300" href="https://instagram.com/erphha"
+              >Erphha</a
+            >,
+            <a style="color: #ffc300" href="https://instagram.com/arab.sol"
+              >Abol</a
+            >
+            و
+            <a style="color: #ffc300" href="https://twitter.com/smarx">smarx</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-    <h2 class="f2 fw5 mt2">Things to read</h2>
-    <ul>
-      <li><a href="https://programtheblockchain.com">Program the Blockchain</a> – This is where I blog about smart contracts, so as you can imagine, there's a lot of useful content there.</li>
-      <li><a href="https://solidity.readthedocs.io">Solidity documentation</a> – The Solidity documentation isn't always the best written, but it's fairly comprehensive.</li>
-      <li><a href="http://yellowpaper.io/">The yellow paper</a> – Notoriously hard to read, the yellow paper is nonetheless the definitive source for details about Ethereum and the Ethereum Virtual Machine (EVM).</li>
-    </ul>
-
-    <h2 class="f2 fw5 mt2">Code libraries</h2>
-    <ul>
-      <li><a href="https://github.com/ethereum/web3.js">web3.js</a> – web3.js is the standard JavaScript client library for working with Ethereum.</li>
-      <li><a href="https://github.com/ethereumjs">ethereumjs</a> – The <code>ethereumjs</code> suite of Node.js modules are quite useful.</li>
-      <li><a href="https://github.com/ethereum/web3.py">web3.py</a> – This is essentialy web3.js but for Python.</li>
-    </ul>
-
-    <h2 class="f2 fw5 mt2">Ways to get help</h2>
-    <ul>
-      <li><a href="https://reddit.com/r/capturetheether">/r/CaptureTheEther</a> – I've set up a subreddit where people can ask for help, but please avoid spoilers!</li>
-      <li><a href="https://reddit.com/user/smarx">/u/smarx</a> – Feel free to reach out to me directly on Reddit via private message or chat. I'll do my best to get back to you quickly.</li>
-      <li><a href="/cdn-cgi/l/email-protection#b1c2dcd0c3c9f1c2dcd0c3c99fd2dedc"><span class="__cf_email__" data-cfemail="90e3fdf1e2e8d0e3fdf1e2e8bef3fffd">[email&#160;protected]</span></a> – Email is always a good way to reach me.</li>
-      <li><a href="https://twitter.com">@smarx on Twitter</a> – No DMs, please, but feel free to have public discussions with me on Twitter.</li>
-    </ul>
-  </section>
-</article>
-
-
-
-  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
-    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
-    <div class="tc mt3">
-      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
-      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
-      <a href="/cdn-cgi/l/email-protection#8af9e7ebf8f2caf9e7ebf8f2a4e9e5e7" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="780b15190a00380b15190a00561b1715">[email&#160;protected]</span></a>
-    </div>
-  </footer>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
