@@ -19996,7 +19996,7 @@
           type: "event",
         },
       ],
-      b: "0x6377b822239a6cD10f999c32C9bbB5A30cBad1dF",
+      b: "0x79f384451ef9FfE7B18293eF14E27384747b681A",
     };
   },
   function (t, e, r) {

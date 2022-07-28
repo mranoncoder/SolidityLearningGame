@@ -44,7 +44,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Abol.sol</a>
+          <a class="navbar-brand" href="/">Abol.sol</a>
 
           <div class="nav-links" id="navbarNav">
             <ul class="navbar-nav">
@@ -92,8 +92,9 @@
                 -o-tab-size: 4;
                 tab-size: 4;
               "
-            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
-
+            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">
+            pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">13</span>;
+              
             <span style="color:#66d9ef">interface</span> ITokenReceiver {
                 <span style="color:#66d9ef">function</span> tokenFallback(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">from</span>, <span style="color:#66d9ef">uint256</span> value, <span style="color:#66d9ef">bytes</span> data) <span style="color:#66d9ef">external</span>;
             }
@@ -110,7 +111,7 @@
             
                 <span style="color:#66d9ef">event</span> Transfer(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> <span style="color:#66d9ef">from</span>, <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> to, <span style="color:#66d9ef">uint256</span> value);
             
-                <span style="color:#66d9ef">function</span> SimpleERC223Token() <span style="color:#66d9ef">public</span> {
+                <span style="color:#66d9ef">constructor</span>() {
                     balanceOf[msg.sender] <span style="color:#f92672">=</span> totalSupply;
                     emit Transfer(<span style="color:#66d9ef">address</span>(<span style="color:#ae81ff">0</span>), msg.sender, totalSupply);
                 }
@@ -174,7 +175,7 @@
                 SimpleERC223Token <span style="color:#66d9ef">public</span> token;
                 <span style="color:#66d9ef">mapping</span>(<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">uint256</span>) <span style="color:#66d9ef">public</span> balanceOf;
             
-                <span style="color:#66d9ef">function</span> TokenBankChallenge(<span style="color:#66d9ef">address</span> player) <span style="color:#66d9ef">public</span> {
+                <span style="color:#66d9ef">constructor</span>() <span style="color:#66d9ef">public</span> {
                     token <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SimpleERC223Token();
             
                     <span style="color:#75715e">// Divide up the 1,000,000 tokens, which are all initially assigned to
@@ -205,7 +206,10 @@
           </div>
 
           <p class="text-white">
-            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊 ....
+            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊
+            <a href="https://www.youtube.com/watch?v=W1psb1OrDRw" class="text-warning"
+              >Youtube</a
+            >
           </p>
         </div>
       </article>

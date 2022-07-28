@@ -44,7 +44,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Abol.sol</a>
+          <a class="navbar-brand" href="/">Abol.sol</a>
 
           <div class="nav-links" id="navbarNav">
             <ul class="navbar-nav">
@@ -80,16 +80,17 @@
           </p>
           <p class="text-white">
             قرارداد هوشمند بازی سالیدیتی اسم همه ی بازی کن ها رو داخل خودش ثبت
-            میکنه. برای تکمیل این چالش، اسم خودتون رو داخل یک String ثبت کنید
-            (یادتون باشه که String رو خالی نذارید!).
+            میکنه. برای تکمیل این چالش، اسم خودتون رو داخل یک Byte32 ثبت کنید
+            (یادتون باشه که Byte32 رو خالی نذارید!).
           </p>
           <p class="text-white">
-            قرارداد هوشمند بازی سالیدیتی روی Ropsten test network به آدرس .....
+            قرارداد هوشمند بازی سالیدیتی روی Ropsten test network به آدرس  0x79f384451ef9FfE7B18293eF14E27384747b681A
             دیپلوی شده و در دسترس شماست.
           </p>
           <p class="text-white">کد این چالش به این صورت هست:</p>
 
           <div class="highlight" dir="ltr">
+
             <pre
               style="
                 color: #f8f8f2;
@@ -98,10 +99,11 @@
                 -o-tab-size: 4;
                 tab-size: 4;
               "
-            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
+            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">
+            pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">13</span>;
 
-            <span style="color:#75715e">// Relevant part of the CaptureTheEther contract.
-            </span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> CaptureTheEther {
+            <span style="color:#75715e">// بخش مربوط به قرارداده اصلی.
+            </span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> SolidityGame {
                 <span style="color:#66d9ef">mapping</span> (<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">bytes32</span>) <span style="color:#66d9ef">public</span> nicknameOf;
             
                 <span style="color:#66d9ef">function</span> setNickname(<span style="color:#66d9ef">bytes32</span> nickname) <span style="color:#66d9ef">public</span> {
@@ -109,27 +111,30 @@
                 }
             }
             
-            <span style="color:#75715e">// Challenge contract. You don&#39;t need to do anything with this; it just verifies
-            </span><span style="color:#75715e">// that you set a nickname for yourself.
+            <span style="color:#75715e">// قرارداد این چلنج
+            // نیازی نیست که شما کاری کنید این قرارداد فقط چک میکنه که شما اسمتون رو ثبت کردید</span>
             </span><span style="color:#75715e"></span><span style="color:#66d9ef">contract</span> NicknameChallenge {
-                CaptureTheEther cte <span style="color:#f92672">=</span> CaptureTheEther(msg.sender);
+              SolidityGame game <span style="color:#f92672">=</span> SolidityGame(msg.sender);
                 <span style="color:#66d9ef">address</span> player;
             
-                <span style="color:#75715e">// Your address gets passed in as a constructor parameter.
-            </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> NicknameChallenge(<span style="color:#66d9ef">address</span> _player) <span style="color:#66d9ef">public</span> {
+                <span style="color:#75715e">// آدرس شما به عنوان یک پارامتر سازنده ارسال می شود.
+            </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">address</span> _player) <span style="color:#66d9ef">public</span> {
                     player <span style="color:#f92672">=</span> _player;
                 }
             
-                <span style="color:#75715e">// Check that the first character is not null.
+                <span style="color:#75715e">// بررسی برای اینکه بازی کن خالی نباشه
             </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> isComplete() <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>) {
-                    <span style="color:#66d9ef">return</span> cte.nicknameOf(player)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>;
+                    <span style="color:#66d9ef">return</span> game.nicknameOf(player)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>;
                 }
             }
             </code></pre>
           </div>
 
           <p class="text-white">
-            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊 ....
+            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊
+            <a href="https://www.youtube.com/watch?v=NsESckx4oW8" class="text-warning"
+              >Youtube</a
+            >
           </p>
         </div>
       </article>

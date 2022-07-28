@@ -44,7 +44,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Abol.sol</a>
+          <a class="navbar-brand" href="/">Abol.sol</a>
 
           <div class="nav-links" id="navbarNav">
             <ul class="navbar-nav">
@@ -89,13 +89,14 @@
                 -o-tab-size: 4;
                 tab-size: 4;
               "
-            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">4</span>.<span style="color:#ae81ff">21</span>;
-
-            <span style="color:#66d9ef">contract</span> TokenSaleChallenge {
+            ><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">
+              pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">8</span>.<span style="color:#ae81ff">13</span>;
+              
+              <span style="color:#66d9ef">contract</span> TokenSaleChallenge {
                 <span style="color:#66d9ef">mapping</span>(<span style="color:#66d9ef">address</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">uint256</span>) <span style="color:#66d9ef">public</span> balanceOf;
                 <span style="color:#66d9ef">uint256</span> <span style="color:#66d9ef">constant</span> PRICE_PER_TOKEN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>;
             
-                <span style="color:#66d9ef">function</span> TokenSaleChallenge(<span style="color:#66d9ef">address</span> _player) <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">payable</span> {
+                <span style="color:#66d9ef">constructor</span>() <span style="color:#66d9ef">payable</span> {
                     require(msg.value <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">ether</span>);
                 }
             
@@ -113,14 +114,17 @@
                     require(balanceOf[msg.sender] <span style="color:#f92672">&gt;=</span> numTokens);
             
                     balanceOf[msg.sender] <span style="color:#f92672">-=</span> numTokens;
-                    msg.sender.transfer(numTokens <span style="color:#f92672">*</span> PRICE_PER_TOKEN);
+                    payable(msg.sender).transfer(numTokens <span style="color:#f92672">*</span> PRICE_PER_TOKEN);
                 }
             }
             </code></pre>
           </div>
 
           <p class="text-white">
-            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊 ....
+            حین کار کردن میتونید از این موسیقی زیبا هم لذت ببرید 😊
+            <a href="https://www.youtube.com/watch?v=HXJx317BUSc" class="text-warning"
+              >Youtube</a
+            >
           </p>
         </div>
       </article>
