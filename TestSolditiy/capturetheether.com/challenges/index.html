@@ -1,311 +1,464 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- hi-->
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Capture the Ether - 
-  Challenges
-</title>
-  <link rel="stylesheet" href="../tachyons.min.css">
-  <link rel="icon" href="/cteicon.png" type="image/png">
-  <style>
-    #playarrow {
-      transition: all 0.2s ease;
-      left: 0;
-    }
-    a:hover #playarrow {
-      left: 10px;
-    }
-    pre, .pre  {
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <title>Capture the Ether - Challenges</title>
+    <link rel="stylesheet" href="../tachyons.min.css" />
+    <link rel="icon" href="/cteicon.png" type="image/png" />
+    <style>
+      #playarrow {
+        transition: all 0.2s ease;
+        left: 0;
+      }
+      a:hover #playarrow {
+        left: 10px;
+      }
+      pre,
+      .pre {
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
 
-    code {
-      font-family: inconsolata, Menlo, Monaco, Consolas, "Courier New", monospace;
-    }
+      code {
+        font-family: inconsolata, Menlo, Monaco, Consolas, "Courier New",
+          monospace;
+      }
 
-    code {
-      padding: 0.2em;
-      font-size: 85%;
-      background-color: rgba(27,31,35,.05);
-      border-radius: 3px;
-    }
+      code {
+        padding: 0.2em;
+        font-size: 85%;
+        background-color: rgba(27, 31, 35, 0.05);
+        border-radius: 3px;
+      }
 
-    pre code {
-      background-color: transparent;
-      display: block;
-      padding: 1.5em;
-      white-space: pre;
-      font-size: .875rem;
-      line-height: 1.25;
-    }
+      pre code {
+        background-color: transparent;
+        display: block;
+        padding: 1.5em;
+        white-space: pre;
+        font-size: 0.875rem;
+        line-height: 1.25;
+      }
 
-    pre {
-      white-space: pre;
+      pre {
+        white-space: pre;
 
-      hyphens: none;
-      position: relative;
-    }
+        hyphens: none;
+        position: relative;
+      }
 
-    article p {
-      margin-top: 0;
-    }
+      article p {
+        margin-top: 0;
+      }
 
-    nav {
-      background-color: #1B9AAA;
-    }
+      nav {
+        background-color: #1b9aaa;
+      }
 
-    .molengo {
-      font-family: molengo;
-    }
+      .molengo {
+        font-family: molengo;
+      }
 
-    .lekton {
-      font-family: lekton;
-    }
+      .lekton {
+        font-family: lekton;
+      }
 
-    .vt323 {
-      font-family: VT323;
-    }
+      .vt323 {
+        font-family: VT323;
+      }
 
-    strong {
-      font-weight: bold;
-    }
+      strong {
+        font-weight: bold;
+      }
 
-    .in-progress {
-      background-color: #e7040f;
-      color: white;
-      cursor: default;
-    }
+      .in-progress {
+        background-color: #e7040f;
+        color: white;
+        cursor: default;
+      }
 
-    .pressstart2p {
-      font-family: press_start_2pregular;
-    }
+      .pressstart2p {
+        font-family: press_start_2pregular;
+      }
 
-    sidebar#left {
-      max-width: 30em;
-    }
-  </style>
-  <link rel="stylesheet" href="/pressstart2p/stylesheet.css">
-  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
-  <script>
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      console.log("Not running Google Analytics on localhost.");
-    } else {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      sidebar#left {
+        max-width: 30em;
+      }
+    </style>
+    <link rel="stylesheet" href="/pressstart2p/stylesheet.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Molengo"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+    />
 
-      gtag('config', 'UA-116951907-1');
-    }
-  </script>
-  
-</head>
-<body class="avenir">
-  
-  <nav class="pv3 ph4 w-100 dt mb5">
-    <a class="dtc v-mid" href="/" title="Home"><img src="/cteicon.png" class="dib" alt="flag" style="width:60px;min-width:30px"></a>
-    <div class="dtc v-mid">
-      <a class="link dim white ttu tracked fw6 ml4" href="/" title="Home">Home</a>
-      <a class="link dim white ttu tracked fw6 ml4" href="/challenges" title="Challenges">Challenges</a>
-      <a class="link dim white ttu tracked fw6 ml4" href="/resources" title="Resources">Resources</a>
-      <a class="link dim white ttu tracked fw6 ml4" href="/leaderboard" title="Leaderboard">Leaderboard</a>
-    </div>
-    <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
-      <div id="player"></div>
-    </div>
-  </nav>
-  
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"
+    ></script>
+    <script>
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        console.log("Not running Google Analytics on localhost.");
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-  
-  <article class="ph3 center" style="max-width: 1400px">
-    
-      <div class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray">
-  <h2 class="fw5 f2 mb0 avenir">
-    <a href="https://capturetheether.com/challenges/warmup/" class="dark-gray no-underline">
-      Warmup
-    </a>
-  </h2>
-  <p>The warmup challenges are intended to get you familiar with the way Capture the Ether works and the tools you need to use.</p>
+        gtag("config", "UA-116951907-1");
+      }
+    </script>
+  </head>
+  <body class="avenir">
+    <nav class="pv3 ph4 w-100 dt mb5">
+      <a class="dtc v-mid" href="/" title="Home"
+        ><img
+          src="/cteicon.png"
+          class="dib"
+          alt="flag"
+          style="width: 60px; min-width: 30px"
+      /></a>
+      <div class="dtc v-mid">
+        <a class="link dim white ttu tracked fw6 ml4" href="/" title="Home"
+          >Home</a
+        >
+        <a
+          class="link dim white ttu tracked fw6 ml4"
+          href="/challenges"
+          title="Challenges"
+          >Challenges</a
+        >
+        <a
+          class="link dim white ttu tracked fw6 ml4"
+          href="/resources"
+          title="Resources"
+          >Resources</a
+        >
+        <a
+          class="link dim white ttu tracked fw6 ml4"
+          href="/leaderboard"
+          title="Leaderboard"
+          >Leaderboard</a
+        >
+      </div>
+      <div class="w4 mw4 dtc v-mid overflow-x-hidden overflow-y-hidden">
+        <div id="player"></div>
+      </div>
+    </nav>
 
-  <ul class="list pl0 pv3">
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="/warmup/deploy/">Deploy a contract</a>
-        <small class="f6 fr black-hover black-40">50 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/warmup/call-me/">Call me</a>
-        <small class="f6 fr black-hover black-40">100 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/warmup/nickname/">Choose a nickname</a>
-        <small class="f6 fr black-hover black-40">200 points</small>
-      </li>
-    
-  </ul>
-</div>
+    <article class="ph3 center" style="max-width: 1400px">
+      <div
+        class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray"
+      >
+        <h2 class="fw5 f2 mb0 avenir">
+          <a
+            href="https://capturetheether.com/challenges/warmup/"
+            class="dark-gray no-underline"
+          >
+            Warmup
+          </a>
+        </h2>
+        <p>
+          The warmup challenges are intended to get you familiar with the way
+          Capture the Ether works and the tools you need to use.
+        </p>
 
-    
-      <div class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray">
-  <h2 class="fw5 f2 mb0 avenir">
-    <a href="https://capturetheether.com/challenges/lotteries/" class="dark-gray no-underline">
-      Lotteries
-    </a>
-  </h2>
-  <p>Feeling lucky? These challenges will show how hard it is to run a fair lottery.</p>
+        <ul class="list pl0 pv3">
+          <li class="mv3 lekton lh-title">
+            <a class="blue no-underline underline-hover" href="/warmup/deploy/"
+              >Deploy a contract</a
+            >
+            <small class="f6 fr black-hover black-40">50 points</small>
+          </li>
 
-  <ul class="list pl0 pv3">
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/lotteries/guess-the-number/">Guess the number</a>
-        <small class="f6 fr black-hover black-40">200 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/lotteries/guess-the-secret-number/">Guess the secret number</a>
-        <small class="f6 fr black-hover black-40">300 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/lotteries/guess-the-random-number/">Guess the random number</a>
-        <small class="f6 fr black-hover black-40">300 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/lotteries/guess-the-new-number/">Guess the new number</a>
-        <small class="f6 fr black-hover black-40">400 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/lotteries/predict-the-future/">Predict the future</a>
-        <small class="f6 fr black-hover black-40">500 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/lotteries/predict-the-block-hash/">Predict the block hash</a>
-        <small class="f6 fr black-hover black-40">750 points</small>
-      </li>
-    
-  </ul>
-</div>
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/warmup/call-me/"
+              >Call me</a
+            >
+            <small class="f6 fr black-hover black-40">100 points</small>
+          </li>
 
-    
-      <div class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray">
-  <h2 class="fw5 f2 mb0 avenir">
-    <a href="https://capturetheether.com/challenges/math/" class="dark-gray no-underline">
-      Math
-    </a>
-  </h2>
-  <p>These challenges use a variety of techniques, but they all involve a bit of math.</p>
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/warmup/nickname/"
+              >Choose a nickname</a
+            >
+            <small class="f6 fr black-hover black-40">200 points</small>
+          </li>
+        </ul>
+      </div>
 
-  <ul class="list pl0 pv3">
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/math/token-sale/">Token sale</a>
-        <small class="f6 fr black-hover black-40">500 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/math/token-whale/">Token whale</a>
-        <small class="f6 fr black-hover black-40">500 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/math/retirement-fund/">Retirement fund</a>
-        <small class="f6 fr black-hover black-40">500 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/math/mapping/">Mapping</a>
-        <small class="f6 fr black-hover black-40">750 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/math/donation/">Donation</a>
-        <small class="f6 fr black-hover black-40">750 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/math/fifty-years/">Fifty years</a>
-        <small class="f6 fr black-hover black-40">2000 points</small>
-      </li>
-    
-  </ul>
-</div>
+      <div
+        class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray"
+      >
+        <h2 class="fw5 f2 mb0 avenir">
+          <a
+            href="https://capturetheether.com/challenges/lotteries/"
+            class="dark-gray no-underline"
+          >
+            Lotteries
+          </a>
+        </h2>
+        <p>
+          Feeling lucky? These challenges will show how hard it is to run a fair
+          lottery.
+        </p>
 
-    
-      <div class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray">
-  <h2 class="fw5 f2 mb0 avenir">
-    <a href="https://capturetheether.com/challenges/accounts/" class="dark-gray no-underline">
-      Accounts
-    </a>
-  </h2>
-  <p>These challenges test your understanding of Ethereum accounts.</p>
+        <ul class="list pl0 pv3">
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/lotteries/guess-the-number/"
+              >Guess the number</a
+            >
+            <small class="f6 fr black-hover black-40">200 points</small>
+          </li>
 
-  <ul class="list pl0 pv3">
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/accounts/fuzzy-identity/">Fuzzy identity</a>
-        <small class="f6 fr black-hover black-40">500 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/accounts/public-key/">Public Key</a>
-        <small class="f6 fr black-hover black-40">750 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/accounts/account-takeover/">Account Takeover</a>
-        <small class="f6 fr black-hover black-40">1500 points</small>
-      </li>
-    
-  </ul>
-</div>
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/lotteries/guess-the-secret-number/"
+              >Guess the secret number</a
+            >
+            <small class="f6 fr black-hover black-40">300 points</small>
+          </li>
 
-    
-      <div class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray">
-  <h2 class="fw5 f2 mb0 avenir">
-    <a href="https://capturetheether.com/challenges/miscellaneous/" class="dark-gray no-underline">
-      Miscellaneous
-    </a>
-  </h2>
-  <p>These challenges defy categorization.</p>
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/lotteries/guess-the-random-number/"
+              >Guess the random number</a
+            >
+            <small class="f6 fr black-hover black-40">300 points</small>
+          </li>
 
-  <ul class="list pl0 pv3">
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/miscellaneous/assume-ownership/">Assume ownership</a>
-        <small class="f6 fr black-hover black-40">300 points</small>
-      </li>
-    
-      <li class="mv3 lekton lh-title">
-        <a class="blue no-underline underline-hover" href="https://capturetheether.com/challenges/miscellaneous/token-bank/">Token bank</a>
-        <small class="f6 fr black-hover black-40">750 points</small>
-      </li>
-    
-  </ul>
-</div>
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/lotteries/guess-the-new-number/"
+              >Guess the new number</a
+            >
+            <small class="f6 fr black-hover black-40">400 points</small>
+          </li>
 
-    
-  </article>
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/lotteries/predict-the-future/"
+              >Predict the future</a
+            >
+            <small class="f6 fr black-hover black-40">500 points</small>
+          </li>
 
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/lotteries/predict-the-block-hash/"
+              >Predict the block hash</a
+            >
+            <small class="f6 fr black-hover black-40">750 points</small>
+          </li>
+        </ul>
+      </div>
 
-  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
-    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
-    <div class="tc mt3">
-      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
-      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
-      <a href="/cdn-cgi/l/email-protection#d7a4bab6a5af97a4bab6a5aff9b4b8ba" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="14677975666c54677975666c3a777b79">[email&#160;protected]</span></a>
-    </div>
-  </footer>
+      <div
+        class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray"
+      >
+        <h2 class="fw5 f2 mb0 avenir">
+          <a
+            href="https://capturetheether.com/challenges/math/"
+            class="dark-gray no-underline"
+          >
+            Math
+          </a>
+        </h2>
+        <p>
+          These challenges use a variety of techniques, but they all involve a
+          bit of math.
+        </p>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
-</body>
+        <ul class="list pl0 pv3">
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/math/token-sale/"
+              >Token sale</a
+            >
+            <small class="f6 fr black-hover black-40">500 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/math/token-whale/"
+              >Token whale</a
+            >
+            <small class="f6 fr black-hover black-40">500 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/math/retirement-fund/"
+              >Retirement fund</a
+            >
+            <small class="f6 fr black-hover black-40">500 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/math/mapping/"
+              >Mapping</a
+            >
+            <small class="f6 fr black-hover black-40">750 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/math/donation/"
+              >Donation</a
+            >
+            <small class="f6 fr black-hover black-40">750 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/math/fifty-years/"
+              >Fifty years</a
+            >
+            <small class="f6 fr black-hover black-40">2000 points</small>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray"
+      >
+        <h2 class="fw5 f2 mb0 avenir">
+          <a
+            href="https://capturetheether.com/challenges/accounts/"
+            class="dark-gray no-underline"
+          >
+            Accounts
+          </a>
+        </h2>
+        <p>These challenges test your understanding of Ethereum accounts.</p>
+
+        <ul class="list pl0 pv3">
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/accounts/fuzzy-identity/"
+              >Fuzzy identity</a
+            >
+            <small class="f6 fr black-hover black-40">500 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/accounts/public-key/"
+              >Public Key</a
+            >
+            <small class="f6 fr black-hover black-40">750 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/accounts/account-takeover/"
+              >Account Takeover</a
+            >
+            <small class="f6 fr black-hover black-40">1500 points</small>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="measure mt4 center lh-copy f4 avenir bw1 bl-0 bt-0 br-0 b--dotted b--light-gray"
+      >
+        <h2 class="fw5 f2 mb0 avenir">
+          <a
+            href="https://capturetheether.com/challenges/miscellaneous/"
+            class="dark-gray no-underline"
+          >
+            Miscellaneous
+          </a>
+        </h2>
+        <p>These challenges defy categorization.</p>
+
+        <ul class="list pl0 pv3">
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/miscellaneous/assume-ownership/"
+              >Assume ownership</a
+            >
+            <small class="f6 fr black-hover black-40">300 points</small>
+          </li>
+
+          <li class="mv3 lekton lh-title">
+            <a
+              class="blue no-underline underline-hover"
+              href="https://capturetheether.com/challenges/miscellaneous/token-bank/"
+              >Token bank</a
+            >
+            <small class="f6 fr black-hover black-40">750 points</small>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+      <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+      <div class="tc mt3">
+        <a
+          href="https://www.reddit.com/r/capturetheether"
+          title="Language"
+          class="f6 dib ph2 link mid-gray hover-gold"
+          >/r/capturetheether</a
+        >
+        <a
+          href="https://twitter.com/smarx"
+          title="Terms"
+          class="f6 dib ph2 link mid-gray hover-light-purple"
+          >@smarx</a
+        >
+        <a
+          href="/cdn-cgi/l/email-protection#d7a4bab6a5af97a4bab6a5aff9b4b8ba"
+          title="Privacy"
+          class="f6 dib ph2 link mid-gray hover-green"
+          ><span
+            class="__cf_email__"
+            data-cfemail="14677975666c54677975666c3a777b79"
+            >[email&#160;protected]</span
+          ></a
+        >
+      </div>
+    </footer>
+
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="/app.js"></script>
+  </body>
 </html>

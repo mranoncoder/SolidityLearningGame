@@ -1,100 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html dir="rtl" lang="fa">
-<head>
-  <meta charset="utf-8">
-  <title>Capture the Ether - 
-  Leaderboard
-</title>
-<link
-rel="stylesheet"
-href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-/>
-<!-- <link rel="stylesheet" href="../tachyons.min.css"> -->
-<!-- <link rel="icon" href="../cteicon.png" type="image/png"> -->
-<link rel="stylesheet" href="../../../css/bootstrap.css" />
-<link rel="stylesheet" href="../../../css/pages.css" />
+  <head>
+    <meta charset="utf-8" />
+    <title>Capture the Ether - Leaderboard</title>
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    />
+    <!-- <link rel="stylesheet" href="../tachyons.min.css"> -->
+    <!-- <link rel="icon" href="../cteicon.png" type="image/png"> -->
+    <link rel="stylesheet" href="../../../css/bootstrap.css" />
+    <link rel="stylesheet" href="../../../css/pages.css" />
 
-<!-- <link rel="stylesheet" href="../font/stylesheet.css"> -->
-<!--Google font-->
-<link
-href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800"
-rel="stylesheet"
-/>
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
-  <script>
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      console.log("Not running Google Analytics on localhost.");
-    } else {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- <link rel="stylesheet" href="../font/stylesheet.css"> -->
+    <!--Google font-->
+    <link
+      href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800"
+      rel="stylesheet"
+    />
 
-      gtag('config', 'UA-116951907-1');
-    }
-  </script>
-  
-</head>
-<body class="avenir">
-  <div class="container">
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Abol.sol</a>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"
+    ></script>
+    <script>
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        console.log("Not running Google Analytics on localhost.");
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-      <div class="nav-links" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item mx-2">
-            <a
-              class="nav-link  "
-              aria-current="page"
-              href="/"
-              >خانه</a
+        gtag("config", "UA-116951907-1");
+      }
+    </script>
+  </head>
+  <body class="avenir">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">Abol.sol</a>
+
+          <div class="nav-links" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item mx-2">
+                <a class="nav-link" aria-current="page" href="/">خانه</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" href="/challenges">چالش ها</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" href="/resources">منابع</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" href="/leaderboard">لیدربرد</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <img class="center db pb4" width="50" height="50" src="/src/award.png" />
+
+      <div id="leaderboard"></div>
+      <script src="/leaderboard.js"></script>
+    </div>
+
+    <footer class="py-5 my-4" style="background-color: #108460">
+      <div class="container">
+        <div class="row my-2">
+          <div
+            class="col-md-4 mx-auto text-center small-xl"
+            style="color: white"
+          >
+            ساخته شده توسط
+            <a style="color: #ffc300" href="https://instagram.com/erphha"
+              >Erphha</a
+            >,
+            <a style="color: #ffc300" href="https://instagram.com/arab.sol"
+              >Abol</a
             >
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link " href="/challenges">چالش ها</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link " href="/resources">منابع</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link " href="/leaderboard">لیدربرد</a>
-          </li>
-        </ul>
+            و
+            <a style="color: #ffc300" href="https://twitter.com/smarx">smarx</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-  
+    </footer>
 
-  
-  
-<img class="center db pb4 " width = "50" height = "50" src="/src/award.png">
-
-<div id="leaderboard"></div>
-<script src="/leaderboard.js"></script>
-</div>
-
-<footer class="py-5 my-4" style="background-color: #108460">
-  <div class="container">
-    <div class="row my-2">
-      <div
-        class="col-md-4 mx-auto text-center small-xl"
-        style="color: white"
-      >
-        ساخته شده توسط
-        <a style="color: #ffc300" href="https://instagram.com/erphha"
-          >Erphha</a
-        >,
-        <a style="color: #ffc300" href="https://instagram.com/arab.sol"
-          >Abol</a
-        >
-        و
-        <a style="color: #ffc300" href="https://twitter.com/smarx">smarx</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/app.js"></script>
-</body>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="/app.js"></script>
+  </body>
 </html>

@@ -1,158 +1,240 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-	<meta name="generator" content="Hugo 0.74.3" />
-  <meta charset="utf-8">
-  <title>بازی سالیدیتی</title>
-  <link rel="stylesheet" href="./tachyons.min.css">
-  <link rel="icon" href="cteicon.png" type="image/png">
-  <style>
-    #playarrow {
-      transition: all 0.2s ease;
-      left: 0;
-    }
-    a:hover #playarrow {
-      left: 10px;
-    }
-    pre, .pre  {
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
+  <head>
+    <meta name="generator" content="Hugo 0.74.3" />
+    <meta charset="utf-8" />
+    <title>بازی سالیدیتی</title>
+    <link rel="stylesheet" href="./tachyons.min.css" />
+    <link rel="icon" href="cteicon.png" type="image/png" />
+    <style>
+      #playarrow {
+        transition: all 0.2s ease;
+        left: 0;
+      }
+      a:hover #playarrow {
+        left: 10px;
+      }
+      pre,
+      .pre {
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
 
-    code {
-      font-family: inconsolata, Menlo, Monaco, Consolas, "Courier New", monospace;
-    }
+      code {
+        font-family: inconsolata, Menlo, Monaco, Consolas, "Courier New",
+          monospace;
+      }
 
-    code {
-      padding: 0.2em;
-      font-size: 85%;
-      background-color: rgba(27,31,35,.05);
-      border-radius: 3px;
-    }
+      code {
+        padding: 0.2em;
+        font-size: 85%;
+        background-color: rgba(27, 31, 35, 0.05);
+        border-radius: 3px;
+      }
 
-    pre code {
-      background-color: transparent;
-      display: block;
-      padding: 1.5em;
-      white-space: pre;
-      font-size: .875rem;
-      line-height: 1.25;
-    }
+      pre code {
+        background-color: transparent;
+        display: block;
+        padding: 1.5em;
+        white-space: pre;
+        font-size: 0.875rem;
+        line-height: 1.25;
+      }
 
-    pre {
-      white-space: pre;
+      pre {
+        white-space: pre;
 
-      hyphens: none;
-      position: relative;
-    }
+        hyphens: none;
+        position: relative;
+      }
 
-    article p {
-      margin-top: 0;
-    }
+      article p {
+        margin-top: 0;
+      }
 
-    nav {
-      background-color: #1B9AAA;
-    }
+      nav {
+        background-color: #1b9aaa;
+      }
 
-    .molengo {
-      font-family: molengo;
-    }
+      .molengo {
+        font-family: molengo;
+      }
 
-    .lekton {
-      font-family: lekton;
-    }
+      .lekton {
+        font-family: lekton;
+      }
 
-    .vt323 {
-      font-family: VT323;
-    }
+      .vt323 {
+        font-family: VT323;
+      }
 
-    strong {
-      font-weight: bold;
-    }
+      strong {
+        font-weight: bold;
+      }
 
-    .in-progress {
-      background-color: #e7040f;
-      color: white;
-      cursor: default;
-    }
+      .in-progress {
+        background-color: #e7040f;
+        color: white;
+        cursor: default;
+      }
 
-    .pressstart2p {
-      font-family: press_start_2pregular;
-    }
+      .pressstart2p {
+        font-family: press_start_2pregular;
+      }
 
-    sidebar#left {
-      max-width: 30em;
-    }
-  </style>
-  <link rel="stylesheet" href="pressstart2p/stylesheet.css">
-  <link href="https://fonts.googleapis.com/css?family=Molengo" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"></script>
-  <script>
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      console.log("Not running Google Analytics on localhost.");
-    } else {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      sidebar#left {
+        max-width: 30em;
+      }
+    </style>
+    <link rel="stylesheet" href="pressstart2p/stylesheet.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Molengo"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lekton:400,400i,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+    />
 
-      gtag('config', 'UA-116951907-1');
-    }
-  </script>
-  
-</head>
-<body class="avenir">
-  
-  <header class="tc pv4 pv5-ns" style="background-color: #1B9AAA">
-    <img src="cteicon.png" class="w-auto-ns h-auto-ns mb2" alt="flag">
-    <h1 class="mt0 f3 f2-ns fw6 white">Capture the Ether</h1>
-    <h2 class="f6 white-90 fw2 ttu tracked">the game of Ethereum smart contract security</h2>
-    <a class="mt2 mt4-ns f6 f3-ns link br3 ph3 ph4-ns pv2 pv3-ns mb2 dib white bw2 ba ttu" style="background-color: #ED6C2D" href="challenges/index.html">Let's play
-      <svg class="w1 dn dib-ns" data-icon="chevronRight" viewBox="0 0 32 32" style="fill:currentcolor;position:relative" id="playarrow">
-        <title>chevronRight icon</title>
-        <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
-      </svg>
-    </a>
-  </header>
-  
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-116951907-1"
+    ></script>
+    <script>
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        console.log("Not running Google Analytics on localhost.");
+      } else {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-  
-<section class="ph4 pt5 dt-l dt--fixed-l">
-  <section class="dtc-l fl-l w-33-l ph4 mb5 mb6-l">
-    <h3 class="tc-l f4 black-70">What is this?</h3>
-    <p class="f5 lh-copy measure">Capture the Ether is a game in which you hack Ethereum smart contracts to learn about security.</p>
-    <p class="f5 lh-copy measure">It's meant to be both fun and educational.</p>
-    <p class="f5 lh-copy measure">This game is brought to you by <a href="https://twitter.com/smarx">@smarx</a>, who blogs about smart contract development at <a href="https://programtheblockchain.com/">Program the Blockchain</a>.</p>
-  </section>
+        gtag("config", "UA-116951907-1");
+      }
+    </script>
+  </head>
+  <body class="avenir">
+    <header class="tc pv4 pv5-ns" style="background-color: #1b9aaa">
+      <img src="cteicon.png" class="w-auto-ns h-auto-ns mb2" alt="flag" />
+      <h1 class="mt0 f3 f2-ns fw6 white">Capture the Ether</h1>
+      <h2 class="f6 white-90 fw2 ttu tracked">
+        the game of Ethereum smart contract security
+      </h2>
+      <a
+        class="mt2 mt4-ns f6 f3-ns link br3 ph3 ph4-ns pv2 pv3-ns mb2 dib white bw2 ba ttu"
+        style="background-color: #ed6c2d"
+        href="challenges/index.html"
+        >Let's play
+        <svg
+          class="w1 dn dib-ns"
+          data-icon="chevronRight"
+          viewBox="0 0 32 32"
+          style="fill: currentcolor; position: relative"
+          id="playarrow"
+        >
+          <title>chevronRight icon</title>
+          <path d="M12 1 L26 16 L12 31 L8 27 L18 16 L8 5 z"></path>
+        </svg>
+      </a>
+    </header>
 
-  <section class="dtc-l fl-l w-33-l ph4 mb5 mb6-l">
-    <h3 class="tc-l f4 black-70">How do I win?</h3>
-    <p class="f5 lh-copy measure">The game consists of a series of challenges in different categories. You earn points for every challenge you complete. Harder challenges are worth more points.</p>
-    <p class="f5 lh-copy measure">Each challenge is in the form of a smart contract with an <code>isComplete</code> function (or public state variable). The goal is always to make <code>isComplete()</code> return <code>true</code>.</p>
-    <p class="f5 lh-copy measure">If you're into that stort of thing, there's a <a href="leaderboard/index.html">leaderboard</a>.</p>
-  </section>
+    <section class="ph4 pt5 dt-l dt--fixed-l">
+      <section class="dtc-l fl-l w-33-l ph4 mb5 mb6-l">
+        <h3 class="tc-l f4 black-70">What is this?</h3>
+        <p class="f5 lh-copy measure">
+          Capture the Ether is a game in which you hack Ethereum smart contracts
+          to learn about security.
+        </p>
+        <p class="f5 lh-copy measure">
+          It's meant to be both fun and educational.
+        </p>
+        <p class="f5 lh-copy measure">
+          This game is brought to you by
+          <a href="https://twitter.com/smarx">@smarx</a>, who blogs about smart
+          contract development at
+          <a href="https://programtheblockchain.com/">Program the Blockchain</a
+          >.
+        </p>
+      </section>
 
-  <section class="dtc-l fl-l w-33-l ph4 mb5 mb6-l">
-    <h3 class="tc-l f4 black-70">What do I need to know first?</h3>
-    <p class="f5 lh-copy measure">The <a href="challenges/warmup/index.html">warmup</a> category is designed to introduce the basic tools you need, but if you're brand new to Ethereum smart contract development, head over to <a href="https://programtheblockchain.com/">Program the Blockchain</a> first and do some background reading.</p>
-    <p class="f5 lh-copy measure">If you find you're missing some tools or knowledge, check out the <a href="resources/index.html">resources page</a> or consider <a href="https://www.reddit.com/r/capturetheether">asking for help</a>.</p>
-  </section>
-</section>
+      <section class="dtc-l fl-l w-33-l ph4 mb5 mb6-l">
+        <h3 class="tc-l f4 black-70">How do I win?</h3>
+        <p class="f5 lh-copy measure">
+          The game consists of a series of challenges in different categories.
+          You earn points for every challenge you complete. Harder challenges
+          are worth more points.
+        </p>
+        <p class="f5 lh-copy measure">
+          Each challenge is in the form of a smart contract with an
+          <code>isComplete</code> function (or public state variable). The goal
+          is always to make <code>isComplete()</code> return <code>true</code>.
+        </p>
+        <p class="f5 lh-copy measure">
+          If you're into that stort of thing, there's a
+          <a href="leaderboard/index.html">leaderboard</a>.
+        </p>
+      </section>
 
+      <section class="dtc-l fl-l w-33-l ph4 mb5 mb6-l">
+        <h3 class="tc-l f4 black-70">What do I need to know first?</h3>
+        <p class="f5 lh-copy measure">
+          The <a href="challenges/warmup/index.html">warmup</a> category is
+          designed to introduce the basic tools you need, but if you're brand
+          new to Ethereum smart contract development, head over to
+          <a href="https://programtheblockchain.com/">Program the Blockchain</a>
+          first and do some background reading.
+        </p>
+        <p class="f5 lh-copy measure">
+          If you find you're missing some tools or knowledge, check out the
+          <a href="resources/index.html">resources page</a> or consider
+          <a href="https://www.reddit.com/r/capturetheether">asking for help</a
+          >.
+        </p>
+      </section>
+    </section>
 
-  <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
-    <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
-    <div class="tc mt3">
-      <a href="https://www.reddit.com/r/capturetheether" title="Language" class="f6 dib ph2 link mid-gray hover-gold">/r/capturetheether</a>
-      <a href="https://twitter.com/smarx" title="Terms" class="f6 dib ph2 link mid-gray hover-light-purple">@smarx</a>
-      <a href="cdn-cgi/l/email-protection.html#22514f43505a62514f43505a0c414d4f" title="Privacy" class="f6 dib ph2 link mid-gray hover-green"><span class="__cf_email__" data-cfemail="12617f73606a52617f73606a3c717d7f">[email&#160;protected]</span></a>
-    </div>
-  </footer>
+    <footer class="mt5 pv4 ph3 ph5-m ph6-l mid-gray">
+      <small class="f6 db tc">Built by <b class="ttu">SMARX</b>.</small>
+      <div class="tc mt3">
+        <a
+          href="https://www.reddit.com/r/capturetheether"
+          title="Language"
+          class="f6 dib ph2 link mid-gray hover-gold"
+          >/r/capturetheether</a
+        >
+        <a
+          href="https://twitter.com/smarx"
+          title="Terms"
+          class="f6 dib ph2 link mid-gray hover-light-purple"
+          >@smarx</a
+        >
+        <a
+          href="cdn-cgi/l/email-protection.html#22514f43505a62514f43505a0c414d4f"
+          title="Privacy"
+          class="f6 dib ph2 link mid-gray hover-green"
+          ><span
+            class="__cf_email__"
+            data-cfemail="12617f73606a52617f73606a3c717d7f"
+            >[email&#160;protected]</span
+          ></a
+        >
+      </div>
+    </footer>
 
-  <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="app.js"></script>
-</body>
+    <script
+      data-cfasync="false"
+      src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="app.js"></script>
+  </body>
 
-<!-- Mirrored from capturetheether.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jul 2022 12:50:27 GMT -->
+  <!-- Mirrored from capturetheether.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jul 2022 12:50:27 GMT -->
 </html>
